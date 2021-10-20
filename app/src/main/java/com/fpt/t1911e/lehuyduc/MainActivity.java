@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             new_feedback.Description = Description;
             new_feedback.Name = Name;
             new_feedback.Email = Email;
+            new_feedback.Sex = selected_item;
             db.iFeedback().Insert(new_feedback);
             Intent i = new Intent(MainActivity.this, ListFeedback.class);
             startActivity(i);

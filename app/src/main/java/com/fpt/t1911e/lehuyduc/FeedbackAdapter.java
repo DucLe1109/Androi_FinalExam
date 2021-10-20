@@ -31,9 +31,13 @@ public class FeedbackAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         FeedbackHolder holder1 = (FeedbackHolder) holder;
         Feedback item = List_Feedback.get(position);
-        holder1.Fb_Name.setText(holder1.Fb_Name.getText() + item.Name);
-        holder1.Fb_Description.setText(holder1.Fb_Description.getText()+item.Description);
-        holder1.Fb_Email.setText(holder1.Fb_Email.getText()+item.Email);
+        if(item.Name != null && item.Sex != null && item.Description != null && item.Email != null){
+            holder1.Fb_Name.setText("Name: " + item.Name);
+            holder1.Fb_Description.setText("Description: "+item.Description);
+            holder1.Fb_Email.setText("Email: "+item.Email);
+            holder1.Fb_Sex.setText("Gender: "+item.Sex);
+            holder1.Fb_Id.setText(String.valueOf(position+1) + ". ");
+        }
     }
 
     @Override
@@ -43,13 +47,15 @@ public class FeedbackAdapter extends RecyclerView.Adapter {
 
     public class FeedbackHolder extends RecyclerView.ViewHolder {
 
-        private TextView Fb_Name, Fb_Description, Fb_Email;
+        private TextView Fb_Name, Fb_Description, Fb_Email,Fb_Sex,Fb_Id;
 
         public FeedbackHolder(@NonNull View itemView) {
             super(itemView);
             Fb_Name = itemView.findViewById(R.id.Fb_Name);
             Fb_Description = itemView.findViewById(R.id.Fb_Description);
             Fb_Email = itemView.findViewById(R.id.Fb_Email);
+            Fb_Sex = itemView.findViewById(R.id.Fb_Gender);
+            Fb_Id = itemView.findViewById(R.id.Fb_Id);
         }
     }
 }
